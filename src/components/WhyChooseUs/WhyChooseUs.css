@@ -1,0 +1,121 @@
+/* ==========================================================================
+   WhyChooseUs Component Styles
+   ========================================================================== */
+
+.why-us-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+/* First 3 cards each span 2 columns (3 x 2 = 6 cols: Row 1 is full) */
+.reasons-grid .reason-card:nth-child(1),
+.reasons-grid .reason-card:nth-child(2),
+.reasons-grid .reason-card:nth-child(3) {
+  grid-column: span 2;
+}
+
+/* Last 2 cards each span 3 columns (2 x 3 = 6 cols: Row 2 is full & centered) */
+.reasons-grid .reason-card:nth-child(4),
+.reasons-grid .reason-card:nth-child(5) {
+  grid-column: span 3;
+}
+
+.reason-card {
+  padding: 30px 24px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reason-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-xl);
+}
+
+.reason-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reason-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--badge-bg);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.reason-card:hover .reason-icon-wrapper {
+  background: var(--primary-color);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.reason-number {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.reason-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.reason-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reasons-grid .reason-card:nth-child(1),
+  .reasons-grid .reason-card:nth-child(2),
+  .reasons-grid .reason-card:nth-child(3),
+  .reasons-grid .reason-card:nth-child(4) {
+    grid-column: span 1;
+  }
+
+  .reasons-grid .reason-card:nth-child(5) {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reasons-grid .reason-card:nth-child(n) {
+    grid-column: span 1;
+  }
+
+  .reason-card {
+    padding: 24px 20px;
+  }
+}
