@@ -401,3 +401,17 @@ select:focus-visible {
     font-size: 30px;
   }
 }
+
+@media (max-width: 480px) {
+  .section {
+    padding: 54px 0;
+  }
+
+  .container {
+    padding: 0 14px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+}

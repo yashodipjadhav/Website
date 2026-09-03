@@ -294,3 +294,36 @@
     font-size: 14px;
   }
 }
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 14px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .brand-suffix {
+    font-size: 13px;
+  }
+
+  .brand-logo-svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .menu-toggle-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navbar-actions {
+    gap: 8px;
+  }
+}
