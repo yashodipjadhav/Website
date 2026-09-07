@@ -1,15 +1,16 @@
 import { Code2, Smartphone, Palette, Cloud, ArrowUpRight, Check } from "lucide-react";
 import { companyData } from "../../data/companyData";
+import Card3D from "../common/Card3D";
 import "./Services.css";
 
 const Services = ({ onOpenContact }) => {
   const { services } = companyData;
 
   const iconMap = {
-    Code2: <Code2 size={26} />,
-    Smartphone: <Smartphone size={26} />,
-    Palette: <Palette size={26} />,
-    Cloud: <Cloud size={26} />,
+    Code2: <Code2 size={26} className="service-icon-svg anim-icon-wiggle" />,
+    Smartphone: <Smartphone size={26} className="service-icon-svg anim-icon-float" />,
+    Palette: <Palette size={26} className="service-icon-svg anim-icon-sparkle" />,
+    Cloud: <Cloud size={26} className="service-icon-svg anim-icon-float" />,
   };
 
   return (
@@ -29,21 +30,28 @@ const Services = ({ onOpenContact }) => {
         {/* 4-Card Responsive Grid */}
         <div className="services-grid">
           {services.map((service) => (
-            <article key={service.id} className="service-card glass-card">
-              <div className="service-card-top">
-                <div className="service-icon-box">
+            <Card3D
+              key={service.id}
+              as="article"
+              className="service-card glass-card"
+              maxTilt={14}
+              scale={1.03}
+              maxGlare={0.25}
+            >
+              <div className="service-card-top depth-sm">
+                <div className="service-icon-box animated-icon-halo">
                   {iconMap[service.iconName] || <Code2 size={26} />}
                 </div>
                 <span className="service-badge-pill">{service.badge}</span>
               </div>
 
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
+              <h3 className="service-title depth-xs">{service.title}</h3>
+              <p className="service-description depth-xs">{service.description}</p>
 
-              <ul className="service-features-list">
+              <ul className="service-features-list depth-sm">
                 {service.features.map((feat) => (
                   <li key={feat} className="feature-item">
-                    <Check size={14} className="feature-check-icon" />
+                    <Check size={14} className="feature-check-icon anim-icon-pulse" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -51,14 +59,14 @@ const Services = ({ onOpenContact }) => {
 
               <button
                 type="button"
-                className="service-link-btn"
+                className="service-link-btn depth-sm"
                 onClick={() => onOpenContact(service.title)}
                 aria-label={`Inquire about ${service.title}`}
               >
                 <span>Inquire About Service</span>
                 <ArrowUpRight size={17} className="service-arrow" />
               </button>
-            </article>
+            </Card3D>
           ))}
         </div>
       </div>

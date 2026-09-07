@@ -1,5 +1,6 @@
 import { Quote, Star } from "lucide-react";
 import { companyData } from "../../data/companyData";
+import Card3D from "../common/Card3D";
 import "./Testimonials.css";
 
 const Testimonials = () => {
@@ -22,24 +23,37 @@ const Testimonials = () => {
         {/* 3-Card Testimonials Grid */}
         <div className="testimonials-grid">
           {testimonials.map((item) => (
-            <article key={item.id} className="testimonial-card glass-card">
-              <div className="testimonial-card-header">
-                <div className="quote-badge">
-                  <Quote size={20} className="quote-icon-svg" />
+            <Card3D
+              key={item.id}
+              as="article"
+              className="testimonial-card glass-card"
+              maxTilt={12}
+              scale={1.03}
+              maxGlare={0.22}
+            >
+              <div className="testimonial-card-header depth-sm">
+                <div className="quote-badge animated-icon-halo">
+                  <Quote size={20} className="quote-icon-svg anim-icon-float" />
                 </div>
                 <div className="star-rating" aria-label={`${item.rating} out of 5 stars`}>
                   {[...Array(item.rating)].map((_, i) => (
-                    <Star key={i} size={16} className="star-icon" fill="currentColor" />
+                    <Star
+                      key={i}
+                      size={16}
+                      className="star-icon anim-icon-sparkle"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                      fill="currentColor"
+                    />
                   ))}
                 </div>
               </div>
 
-              <blockquote className="testimonial-feedback">
+              <blockquote className="testimonial-feedback depth-xs">
                 "{item.feedback}"
               </blockquote>
 
-              <div className="client-profile">
-                <div className="client-avatar">
+              <div className="client-profile depth-sm">
+                <div className="client-avatar animated-icon-halo">
                   <span>{item.avatarInitials}</span>
                 </div>
                 <div className="client-info">
@@ -49,7 +63,7 @@ const Testimonials = () => {
                   </span>
                 </div>
               </div>
-            </article>
+            </Card3D>
           ))}
         </div>
       </div>

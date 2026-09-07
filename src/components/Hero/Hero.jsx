@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Sparkles, Code2, Cloud, ShieldCheck, Zap, Terminal } from "lucide-react";
 import { companyData } from "../../data/companyData";
+import Card3D from "../common/Card3D";
 import "./Hero.css";
 
 const Hero = ({ onOpenContact }) => {
@@ -17,7 +18,7 @@ const Hero = ({ onOpenContact }) => {
         {/* Left Column: Heading & CTAs */}
         <div className="hero-content">
           <div className="hero-badge">
-            <Sparkles size={16} className="badge-icon" />
+            <Sparkles size={16} className="badge-icon anim-icon-sparkle" />
             <span>{hero.badge}</span>
           </div>
 
@@ -37,7 +38,7 @@ const Hero = ({ onOpenContact }) => {
               onClick={() => onOpenContact()}
             >
               <span>{hero.primaryCta}</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={18} className="btn-arrow-icon" />
             </button>
 
             <a href="#services" className="btn btn-secondary hero-btn-alt">
@@ -62,19 +63,29 @@ const Hero = ({ onOpenContact }) => {
         <div className="hero-visual-wrapper">
           {/* Floating Badges */}
           <div className="floating-badge badge-top-right">
-            <Zap size={16} className="badge-zap" />
+            <div className="badge-icon-wrap zap-glow">
+              <Zap size={16} className="badge-zap" />
+            </div>
             <span>High Performance</span>
           </div>
 
           <div className="floating-badge badge-bottom-left">
-            <ShieldCheck size={16} className="badge-shield" />
+            <div className="badge-icon-wrap shield-glow">
+              <ShieldCheck size={16} className="badge-shield" />
+            </div>
             <span>Enterprise Security</span>
           </div>
 
-          {/* Glassmorphic IDE Terminal Visual */}
-          <div className="terminal-card">
+          {/* 3D Glassmorphic IDE Terminal Visual */}
+          <Card3D
+            className="terminal-card"
+            maxTilt={14}
+            perspective={1100}
+            scale={1.03}
+            maxGlare={0.2}
+          >
             {/* Terminal Window Header */}
-            <div className="terminal-header">
+            <div className="terminal-header depth-sm">
               <div className="terminal-dots">
                 <span className="dot dot-red" />
                 <span className="dot dot-yellow" />
@@ -87,7 +98,7 @@ const Hero = ({ onOpenContact }) => {
                   className={`tab-btn ${activeTab === "solution" ? "active" : ""}`}
                   onClick={() => setActiveTab("solution")}
                 >
-                  <Code2 size={13} />
+                  <Code2 size={13} className={activeTab === "solution" ? "anim-icon-wiggle" : ""} />
                   <span>TechNovaSolution.ts</span>
                 </button>
                 <button
@@ -95,14 +106,14 @@ const Hero = ({ onOpenContact }) => {
                   className={`tab-btn ${activeTab === "cloud" ? "active" : ""}`}
                   onClick={() => setActiveTab("cloud")}
                 >
-                  <Cloud size={13} />
+                  <Cloud size={13} className={activeTab === "cloud" ? "anim-icon-float" : ""} />
                   <span>CloudDeploy.yml</span>
                 </button>
               </div>
             </div>
 
             {/* Terminal Code Body */}
-            <div className="terminal-body">
+            <div className="terminal-body depth-md">
               {activeTab === "solution" ? (
                 <pre className="code-block">
                   <code>
@@ -182,18 +193,18 @@ const Hero = ({ onOpenContact }) => {
               )}
 
               {/* Status Footer Inside Terminal */}
-              <div className="terminal-status-bar">
+              <div className="terminal-status-bar depth-sm">
                 <div className="status-live">
                   <span className="status-indicator" />
                   <span>Build Status: Passing</span>
                 </div>
                 <div className="status-meta">
-                  <Terminal size={12} />
+                  <Terminal size={12} className="anim-icon-pulse" />
                   <span>Node.js v22 • UTF-8</span>
                 </div>
               </div>
             </div>
-          </div>
+          </Card3D>
         </div>
       </div>
     </section>

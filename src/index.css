@@ -387,6 +387,146 @@ select:focus-visible {
   }
 }
 
+/* Enhanced Icon & UI Keyframes */
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes iconSpinSlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes iconWiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg) scale(1.05);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.05);
+  }
+}
+
+@keyframes iconHeartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.18);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.12);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes iconSparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 2px var(--primary-glow));
+  }
+  50% {
+    transform: scale(1.22) rotate(180deg);
+    filter: drop-shadow(0 0 10px var(--primary-color));
+  }
+}
+
+@keyframes radarWave {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmerGlow {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Reusable Animated Icon Helper Classes */
+.anim-icon-float {
+  animation: iconFloat 3.5s ease-in-out infinite;
+}
+
+.anim-icon-pulse {
+  animation: iconPulse 2.5s ease-in-out infinite;
+}
+
+.anim-icon-spin {
+  animation: iconSpinSlow 12s linear infinite;
+}
+
+.anim-icon-wiggle {
+  animation: iconWiggle 3s ease-in-out infinite;
+}
+
+.anim-icon-heartbeat {
+  animation: iconHeartbeat 2.2s ease-in-out infinite;
+}
+
+.anim-icon-sparkle {
+  animation: iconSparkle 3s ease-in-out infinite;
+}
+
+/* Animated Icon Container with Multi-layer Halo */
+.animated-icon-halo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animated-icon-halo::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+  opacity: 0.7;
+  animation: pulseGlow 3s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.animated-icon-halo > * {
+  position: relative;
+  z-index: 1;
+}
+
+
 /* Responsive Breakpoints */
 @media (max-width: 768px) {
   .section {

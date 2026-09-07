@@ -94,8 +94,8 @@ const ContactModal = ({ isOpen, onClose, initialService = "" }) => {
 
         {isSubmitted ? (
           <div className="modal-success">
-            <div className="success-icon-wrap">
-              <CheckCircle2 size={56} className="success-icon" />
+            <div className="success-icon-wrap animated-icon-halo">
+              <CheckCircle2 size={56} className="success-icon anim-icon-pulse" />
             </div>
             <h3>Message Sent Successfully!</h3>
             <p>
@@ -106,7 +106,7 @@ const ContactModal = ({ isOpen, onClose, initialService = "" }) => {
           <div className="modal-body">
             <div className="modal-header">
               <div className="modal-badge">
-                <Sparkles size={14} />
+                <Sparkles size={14} className="anim-icon-sparkle" />
                 <span>Get in Touch</span>
               </div>
               <h2 id="modal-title">Let's Build Something Amazing</h2>
@@ -117,7 +117,7 @@ const ContactModal = ({ isOpen, onClose, initialService = "" }) => {
               {/* Name Field */}
               <div className="form-group">
                 <label htmlFor="name">
-                  <User size={15} />
+                  <User size={15} className="form-label-icon" />
                   <span>Your Name *</span>
                 </label>
                 <input
@@ -135,7 +135,7 @@ const ContactModal = ({ isOpen, onClose, initialService = "" }) => {
               {/* Email Field */}
               <div className="form-group">
                 <label htmlFor="email">
-                  <Mail size={15} />
+                  <Mail size={15} className="form-label-icon" />
                   <span>Work Email *</span>
                 </label>
                 <input
@@ -153,7 +153,7 @@ const ContactModal = ({ isOpen, onClose, initialService = "" }) => {
               {/* Service Selection */}
               <div className="form-group">
                 <label htmlFor="service">
-                  <Briefcase size={15} />
+                  <Briefcase size={15} className="form-label-icon" />
                   <span>Service of Interest</span>
                 </label>
                 <select
@@ -173,7 +173,7 @@ const ContactModal = ({ isOpen, onClose, initialService = "" }) => {
               {/* Message Field */}
               <div className="form-group">
                 <label htmlFor="message">
-                  <MessageSquare size={15} />
+                  <MessageSquare size={15} className="form-label-icon" />
                   <span>Project Overview *</span>
                 </label>
                 <textarea
@@ -199,7 +199,7 @@ const ContactModal = ({ isOpen, onClose, initialService = "" }) => {
                 ) : (
                   <>
                     <span>Send Message</span>
-                    <Send size={16} />
+                    <Send size={16} className="modal-send-icon" />
                   </>
                 )}
               </button>

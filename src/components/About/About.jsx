@@ -1,21 +1,22 @@
 import { Award, Briefcase, Users, CheckCircle2, Shield, Rocket, HeartHandshake } from "lucide-react";
 import { companyData } from "../../data/companyData";
+import Card3D from "../common/Card3D";
 import "./About.css";
 
 const About = () => {
   const { about } = companyData;
 
   const statIcons = {
-    exp: <Award className="stat-icon-svg" size={26} />,
-    projects: <Briefcase className="stat-icon-svg" size={26} />,
-    clients: <Users className="stat-icon-svg" size={26} />,
-    retention: <HeartHandshake className="stat-icon-svg" size={26} />,
+    exp: <Award className="stat-icon-svg anim-icon-wiggle" size={26} />,
+    projects: <Briefcase className="stat-icon-svg anim-icon-float" size={26} />,
+    clients: <Users className="stat-icon-svg anim-icon-pulse" size={26} />,
+    retention: <HeartHandshake className="stat-icon-svg anim-icon-heartbeat" size={26} />,
   };
 
   const pillarIcons = [
-    <Rocket size={20} className="pillar-icon" />,
-    <Shield size={20} className="pillar-icon" />,
-    <CheckCircle2 size={20} className="pillar-icon" />,
+    <Rocket size={20} className="pillar-icon pillar-rocket" />,
+    <Shield size={20} className="pillar-icon pillar-shield" />,
+    <CheckCircle2 size={20} className="pillar-icon pillar-check" />,
   ];
 
   return (
@@ -42,15 +43,23 @@ const About = () => {
 
             <div className="about-pillars">
               {about.highlights.map((pillar, idx) => (
-                <div key={pillar.title} className="pillar-item">
-                  <div className="pillar-icon-wrap">
-                    {pillarIcons[idx % pillarIcons.length]}
+                <Card3D
+                  key={pillar.title}
+                  className="pillar-item glass-card"
+                  maxTilt={6}
+                  scale={1.015}
+                  maxGlare={0.15}
+                >
+                  <div className="pillar-inner depth-sm">
+                    <div className="pillar-icon-wrap animated-icon-halo">
+                      {pillarIcons[idx % pillarIcons.length]}
+                    </div>
+                    <div>
+                      <h4 className="pillar-title">{pillar.title}</h4>
+                      <p className="pillar-desc">{pillar.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="pillar-title">{pillar.title}</h4>
-                    <p className="pillar-desc">{pillar.desc}</p>
-                  </div>
-                </div>
+                </Card3D>
               ))}
             </div>
           </div>
@@ -59,18 +68,24 @@ const About = () => {
           <div className="about-stats-container">
             <div className="stats-grid">
               {about.stats.map((stat) => (
-                <div key={stat.id} className="stat-card glass-card">
-                  <div className="stat-card-header">
-                    <div className="stat-icon-wrap">
+                <Card3D
+                  key={stat.id}
+                  className="stat-card glass-card"
+                  maxTilt={12}
+                  scale={1.03}
+                  maxGlare={0.25}
+                >
+                  <div className="stat-card-header depth-sm">
+                    <div className="stat-icon-wrap animated-icon-halo">
                       {statIcons[stat.id] || <Award size={24} />}
                     </div>
-                    <span className="stat-number">
+                    <span className="stat-number depth-md">
                       {stat.value}{stat.suffix}
                     </span>
                   </div>
-                  <h3 className="stat-label">{stat.label}</h3>
-                  <p className="stat-desc">{stat.description}</p>
-                </div>
+                  <h3 className="stat-label depth-xs">{stat.label}</h3>
+                  <p className="stat-desc depth-xs">{stat.description}</p>
+                </Card3D>
               ))}
             </div>
           </div>

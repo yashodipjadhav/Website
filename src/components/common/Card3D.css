@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Card3D Interactive Component Styles
+   ========================================================================== */
+
+.card-3d-root {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  isolation: isolate;
+}
+
+.card-3d-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  border-radius: inherit;
+}
+
+/* Glare Overlay */
+.card-3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 20;
+  mix-blend-mode: overlay;
+  overflow: hidden;
+}
+
+/* 3D Parallax Depth Layers */
+.depth-xs, [data-depth="xs"] {
+  transform: translateZ(10px);
+  transform-style: preserve-3d;
+}
+
+.depth-sm, [data-depth="sm"] {
+  transform: translateZ(20px);
+  transform-style: preserve-3d;
+}
+
+.depth-md, [data-depth="md"] {
+  transform: translateZ(32px);
+  transform-style: preserve-3d;
+}
+
+.depth-lg, [data-depth="lg"] {
+  transform: translateZ(48px);
+  transform-style: preserve-3d;
+}
+
+.depth-pop, [data-depth="pop"] {
+  transform: translateZ(64px);
+  transform-style: preserve-3d;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .card-3d-root {
+    transform: none !important;
+    transition: none !important;
+  }
+  .card-3d-glare {
+    display: none !important;
+  }
+}

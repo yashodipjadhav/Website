@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ShoppingBag, BarChart3, Activity, ArrowUpRight, X } from "lucide-react";
 import { companyData } from "../../data/companyData";
+import Card3D from "../common/Card3D";
 import "./Projects.css";
 
 const Projects = ({ onOpenContact }) => {
@@ -10,7 +11,7 @@ const Projects = ({ onOpenContact }) => {
   const renderProjectVisual = (type) => {
     if (type === "ecommerce") {
       return (
-        <div className="preview-mockup mockup-ecommerce">
+        <div className="preview-mockup mockup-ecommerce depth-md">
           <div className="mockup-header-bar">
             <div className="mockup-dots">
               <span className="m-dot red" />
@@ -21,8 +22,8 @@ const Projects = ({ onOpenContact }) => {
           </div>
           <div className="mockup-inner-grid">
             <div className="mockup-card-item">
-              <div className="mockup-item-img ecom-img-1">
-                <ShoppingBag size={20} />
+              <div className="mockup-item-img ecom-img-1 animated-icon-halo">
+                <ShoppingBag size={20} className="anim-icon-bounce" />
               </div>
               <div className="mockup-item-info">
                 <span className="mockup-item-title">Quantum X Laptop</span>
@@ -30,8 +31,8 @@ const Projects = ({ onOpenContact }) => {
               </div>
             </div>
             <div className="mockup-card-item">
-              <div className="mockup-item-img ecom-img-2">
-                <ShoppingBag size={20} />
+              <div className="mockup-item-img ecom-img-2 animated-icon-halo">
+                <ShoppingBag size={20} className="anim-icon-wiggle" />
               </div>
               <div className="mockup-item-info">
                 <span className="mockup-item-title">Aero Pro Headphones</span>
@@ -39,7 +40,7 @@ const Projects = ({ onOpenContact }) => {
               </div>
             </div>
           </div>
-          <div className="mockup-stat-pill">
+          <div className="mockup-stat-pill anim-icon-pulse">
             <span>⚡ Sub-second checkout</span>
           </div>
         </div>
@@ -48,7 +49,7 @@ const Projects = ({ onOpenContact }) => {
 
     if (type === "analytics") {
       return (
-        <div className="preview-mockup mockup-analytics">
+        <div className="preview-mockup mockup-analytics depth-md">
           <div className="mockup-header-bar">
             <div className="mockup-dots">
               <span className="m-dot red" />
@@ -59,21 +60,21 @@ const Projects = ({ onOpenContact }) => {
           </div>
           <div className="mockup-chart-grid">
             <div className="mockup-bars">
-              <span className="mockup-bar bar-1" style={{ height: "45%" }} />
-              <span className="mockup-bar bar-2" style={{ height: "70%" }} />
-              <span className="mockup-bar bar-3" style={{ height: "55%" }} />
-              <span className="mockup-bar bar-4" style={{ height: "90%" }} />
-              <span className="mockup-bar bar-5" style={{ height: "80%" }} />
+              <span className="mockup-bar bar-1 live-bar" style={{ height: "45%" }} />
+              <span className="mockup-bar bar-2 live-bar" style={{ height: "70%" }} />
+              <span className="mockup-bar bar-3 live-bar" style={{ height: "55%" }} />
+              <span className="mockup-bar bar-4 live-bar" style={{ height: "90%" }} />
+              <span className="mockup-bar bar-5 live-bar" style={{ height: "80%" }} />
             </div>
             <div className="mockup-metrics-mini">
               <div className="mini-metric">
-                <BarChart3 size={14} />
+                <BarChart3 size={14} className="anim-icon-wiggle" />
                 <span>+34.8% Growth</span>
               </div>
               <div className="mini-metric-value">$128,450 MRR</div>
             </div>
           </div>
-          <div className="mockup-stat-pill">
+          <div className="mockup-stat-pill anim-icon-pulse">
             <span>📊 10M+ Telemetry Events</span>
           </div>
         </div>
@@ -82,7 +83,7 @@ const Projects = ({ onOpenContact }) => {
 
     // Healthcare platform
     return (
-      <div className="preview-mockup mockup-healthcare">
+      <div className="preview-mockup mockup-healthcare depth-md">
         <div className="mockup-header-bar">
           <div className="mockup-dots">
             <span className="m-dot red" />
@@ -93,8 +94,8 @@ const Projects = ({ onOpenContact }) => {
         </div>
         <div className="mockup-health-inner">
           <div className="mockup-patient-card">
-            <div className="health-avatar">
-              <Activity size={18} />
+            <div className="health-avatar animated-icon-halo">
+              <Activity size={18} className="anim-icon-heartbeat" />
             </div>
             <div>
               <span className="patient-name">Live Telehealth Session</span>
@@ -106,7 +107,7 @@ const Projects = ({ onOpenContact }) => {
             <div className="vital-tag">O2: 99%</div>
           </div>
         </div>
-        <div className="mockup-stat-pill">
+        <div className="mockup-stat-pill anim-icon-pulse">
           <span>🔒 HIPAA Compliant</span>
         </div>
       </div>
@@ -130,7 +131,14 @@ const Projects = ({ onOpenContact }) => {
         {/* 3 Projects Grid */}
         <div className="projects-grid">
           {projects.map((project) => (
-            <article key={project.id} className="project-card glass-card">
+            <Card3D
+              key={project.id}
+              as="article"
+              className="project-card glass-card"
+              maxTilt={12}
+              scale={1.025}
+              maxGlare={0.25}
+            >
               {/* Rich Visual Mockup */}
               <div
                 className="project-visual-container"
@@ -141,12 +149,12 @@ const Projects = ({ onOpenContact }) => {
 
               {/* Project Content */}
               <div className="project-content">
-                <div className="project-category-tag">{project.category}</div>
-                <h3 className="project-name">{project.name}</h3>
-                <p className="project-desc">{project.description}</p>
+                <div className="project-category-tag depth-xs">{project.category}</div>
+                <h3 className="project-name depth-xs">{project.name}</h3>
+                <p className="project-desc depth-xs">{project.description}</p>
 
                 {/* Technology Tags */}
-                <div className="technology-tags">
+                <div className="technology-tags depth-sm">
                   {project.technologies.map((tech) => (
                     <span key={tech} className="tech-tag">
                       {tech}
@@ -155,7 +163,7 @@ const Projects = ({ onOpenContact }) => {
                 </div>
 
                 {/* Card Actions */}
-                <div className="project-actions">
+                <div className="project-actions depth-sm">
                   <button
                     type="button"
                     className="project-btn-primary"
@@ -163,7 +171,7 @@ const Projects = ({ onOpenContact }) => {
                     aria-label={`View details for ${project.name}`}
                   >
                     <span>View Details</span>
-                    <ArrowUpRight size={16} />
+                    <ArrowUpRight size={16} className="project-arrow-icon" />
                   </button>
                   <button
                     type="button"
@@ -175,7 +183,7 @@ const Projects = ({ onOpenContact }) => {
                   </button>
                 </div>
               </div>
-            </article>
+            </Card3D>
           ))}
         </div>
       </div>

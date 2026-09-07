@@ -106,15 +106,21 @@ const Footer = ({ onOpenContact }) => {
             <h4 className="footer-col-title">Contact Us</h4>
             <div className="footer-contact-items">
               <a href={`mailto:${brand.email}`} className="contact-row">
-                <Mail size={16} className="contact-icon" />
+                <div className="contact-icon-halo animated-icon-halo">
+                  <Mail size={16} className="contact-icon" />
+                </div>
                 <span>{brand.email}</span>
               </a>
               <a href={`tel:${brand.phone.replace(/[^0-9+]/g, "")}`} className="contact-row">
-                <Phone size={16} className="contact-icon" />
+                <div className="contact-icon-halo animated-icon-halo">
+                  <Phone size={16} className="contact-icon" />
+                </div>
                 <span>{brand.phone}</span>
               </a>
               <div className="contact-row">
-                <MapPin size={16} className="contact-icon" />
+                <div className="contact-icon-halo animated-icon-halo">
+                  <MapPin size={16} className="contact-icon" />
+                </div>
                 <span>{brand.location}</span>
               </div>
             </div>
@@ -125,7 +131,7 @@ const Footer = ({ onOpenContact }) => {
               onClick={() => onOpenContact()}
             >
               <span>Book Consultation</span>
-              <ArrowUpRight size={15} />
+              <ArrowUpRight size={15} className="footer-btn-arrow" />
             </button>
           </div>
         </div>

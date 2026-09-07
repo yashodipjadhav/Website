@@ -1,16 +1,17 @@
 import { Users, Cpu, Lightbulb, HeartHandshake, Clock } from "lucide-react";
 import { companyData } from "../../data/companyData";
+import Card3D from "../common/Card3D";
 import "./WhyChooseUs.css";
 
 const WhyChooseUs = () => {
   const { whyChooseUs } = companyData;
 
   const iconMap = {
-    Users: <Users size={24} />,
-    Cpu: <Cpu size={24} />,
-    Lightbulb: <Lightbulb size={24} />,
-    HeartHandshake: <HeartHandshake size={24} />,
-    Clock: <Clock size={24} />,
+    Users: <Users size={24} className="reason-icon-svg anim-icon-pulse" />,
+    Cpu: <Cpu size={24} className="reason-icon-svg anim-icon-wiggle" />,
+    Lightbulb: <Lightbulb size={24} className="reason-icon-svg anim-icon-sparkle" />,
+    HeartHandshake: <HeartHandshake size={24} className="reason-icon-svg anim-icon-heartbeat" />,
+    Clock: <Clock size={24} className="reason-icon-svg anim-icon-spin" />,
   };
 
   return (
@@ -30,19 +31,25 @@ const WhyChooseUs = () => {
         {/* 5-Card Responsive Reason Grid */}
         <div className="reasons-grid">
           {whyChooseUs.map((reason) => (
-            <div key={reason.id} className="reason-card glass-card">
-              <div className="reason-card-header">
-                <div className="reason-icon-wrapper">
+            <Card3D
+              key={reason.id}
+              className="reason-card glass-card"
+              maxTilt={12}
+              scale={1.025}
+              maxGlare={0.22}
+            >
+              <div className="reason-card-header depth-sm">
+                <div className="reason-icon-wrapper animated-icon-halo">
                   {iconMap[reason.iconName] || <Cpu size={24} />}
                 </div>
-                <span className="reason-number">{reason.number}</span>
+                <span className="reason-number depth-md">{reason.number}</span>
               </div>
 
-              <div className="reason-content">
+              <div className="reason-content depth-xs">
                 <h3 className="reason-title">{reason.title}</h3>
                 <p className="reason-description">{reason.description}</p>
               </div>
-            </div>
+            </Card3D>
           ))}
         </div>
       </div>
