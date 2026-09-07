@@ -6,9 +6,9 @@ export const companyData = {
     tagline: "Building Digital Solutions for Tomorrow",
     description:
       "TechNova Solutions is a technology-driven company specializing in modern web development, digital transformation, and innovative software solutions.",
-    email: "hello@technovasolutions.com",
-    phone: "+1 (800) 555-0199",
-    location: "San Francisco, CA & Global",
+    email: "yashodipjadhav17@gmail.com",
+    phone: "+91 9921861864",
+    location: "Ahilyanagar Maharastra, India",
     founded: "2018",
     socials: [
       { name: "GitHub", url: "https://github.com", icon: "github" },
